@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+	<record model="ir.actions.act_window" id="action_view_categoria">
+            <field name="name">Categoria</field>
+            <field name="res_model">agenda.categorias</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Nueva Categoria</p>
+            </field>
+        </record>
+	<record id="view_categoria_tree" model="ir.ui.view">
+            <field name="name">agenda.categorias.tree</field>
+            <field name="model">agenda.categorias</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Categoria">
+                    <field name="nombre" />
+                </tree>
+            </field>
+        </record>
+
+	<record model="ir.actions.act_window" id="action_view_registro">
+            <field name="name">Registros</field>
+            <field name="res_model">agenda.registros</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Nuevos Registros</p>
+            </field>
+        </record>
+
+        <record id="view_registro_tree" model="ir.ui.view">
+            <field name="name">agenda.registros.tree</field>
+            <field name="model">agenda.registros</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Registros">
+                    <field name="nombre" />
+                    <field name="apellido" />
+                    <field name="correo" />
+                    <field name="telefono" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_registros_form" model="ir.ui.view">
+            <field name="name">agenda.registros.form</field>
+            <field name="model">agenda.registros</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Registros">
+                    <sheet>
+                        <notebook colspan="2">
+                            <page name="personal_information"
+                                string="Informacion Personal">
+                                <group col="2" colspan="2"
+                                    name="personal_detail">
+                                    <field name="nombre" />
+                                    <field name="apellido" />
+                                    <field name="correo" />
+                                    <field name="telefono" />
+                                    <field name="direccion" />
+                                    <field name="categoria" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+	<menuitem id="primer_menu_agenda" name="Agenda" sequence="3"/>
+        <menuitem id="menu_registro" name="Registros" parent="primer_menu_agenda"  
+                  action="action_view_registro"/>/>
+        <menuitem id="menu_categoria" name="Categorias" parent="primer_menu_agenda"  
+                  action="action_view_categoria"/>/>
+
+    </data>
+</odoo>
+
